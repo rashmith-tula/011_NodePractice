@@ -1,0 +1,112 @@
+
+<style type="text/css">
+  body {
+   font-size: 12px;      
+   padding: 8px 8px 8px 0;
+   margin: 30px 10px 30px 5px;
+   background: linear-gradient(#9EC7D8, #ffffff);
+  }  
+  
+  h1 {
+	text-align: left;
+	background-color: #427CAC;
+	min-width: 280px;
+	max-width: 280px;
+	margin: 0 0;
+	border-radius: 0px 0px 5px 0px;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+   }
+   
+   .form {
+	border-top: 20px solid rgb(66,124,172);
+	border-bottom: 3px solid #427CAC;
+    border-left: 3px solid #427CAC;
+    border-right: 3px solid #427CAC;
+    margin: 5px auto;
+	width: 90%;
+	border-radius: 20px;
+	box-shadow: 0px 0px 15px 3px rgba(148,148,148,1);
+	min-width: 600px;
+	-ms-min-width: 600px;
+   }
+   
+   .text {
+     margin: 5px;
+     padding: 5px;  
+     text-align: justify;
+   }
+   
+   ul {
+     margin: 5px 5px 5px 0;
+     padding: 5px 5px 5px 0;  
+     text-align: justify;  
+   }
+   
+   label, input {
+     font-size: 20px;  
+     margin: 10px;
+     padding: 10px;  
+   }
+   
+   .resend {
+     font-size: 8px; 
+     font-weight: bold;
+     text-align: justify;
+     margin: 5px;
+     padding: 5px;  
+   }
+   
+</style>
+
+<div class="form">
+  <h1>Gift Hunt</h1>
+  <p class="text">Hi <%= name %>, How are you doing? I have got a very wonderful gift for you 
+     which is hidden in a very secured place in the office. Follow the instructions below carefully.</p>
+</div>
+
+  <!--<audio  autoplay controls>-->
+  <!-- <source src="/download.mp3" type="audio/mp3">-->
+  <!--</audio>-->
+  <div class="form">
+    <form action="/validate" method="GET">
+      <label for="validate">Authentication Code:</label>      
+      <input type="password" name="validate" id="validate" required> 
+      <input type="submit" name="submit" value="Proceed">
+    </form>
+    <% if(error == 0 && resent !== 1) { %>
+      <p class="resend" style="color: green; font-weigth: bold">Authentication Code is sent to your mobile. Please check. If not received, click on resend button below.</p>
+    <% } else if(error == 1 && resent !== 1) { %>
+      <p class="resend" style="color: red; font-weigth: bold">Wrong authentication code. Please check.</p>
+    <% } else if(resent == 1) { %>
+      <p class="resend" style="color: green; font-weigth: bold">Validation code resent to mobile <%= ownernum %></p>
+    <% } %>
+    <form action="/resend" method="GET">
+     <input type="submit" name="submit" value="Resend">
+    </form>
+  </div>
+  
+ <div class="form">
+  <ul>
+    <li>Your search starts in the next screen.</li>  
+    <br/>
+    <li>You have to enter 15 passwords starting from the next screen to finally reach your gift.</li>
+    <br/>
+    <li>Some of your passwords are placed as chits all over the office.</li>
+    <br/>
+    <li>Clues for the chits will be shown on the screen.</li>
+    <br/>
+    <li>And,some of your passwords will be sent randomly to one of your friends' mobile as message.</li>
+    <br/>
+    <li>The name of your friend will be shown on the screen.</li>
+    <br/>
+    <li>Keep all your passwords handy so that you can restart if the app gets stuck in between.</li>
+    <br/>
+    <li>Never refresh or press back. Click on the link given if you want to restart.</li>
+    <br/>
+    <li>All the best <%= name %></li>
+  </ul>
+ </div>
+
+

@@ -1,0 +1,51 @@
+ <style type="text/css"> 
+  body {
+   font-size: 12px;      
+   padding: 8px 8px 8px 0;
+   margin: 30px 10px 30px 5px;
+   background: linear-gradient(#9EC7D8, #ffffff);
+  }
+  
+  .form {
+	border-top: 20px solid rgb(66,124,172);
+	border-bottom: 3px solid #427CAC;
+    border-left: 3px solid #427CAC;
+    border-right: 3px solid #427CAC;
+    margin: 5px auto;
+	width: 90%;
+	border-radius: 20px;
+	box-shadow: 0px 0px 15px 3px rgba(148,148,148,1);
+	min-width: 600px;
+	-ms-min-width: 600px;
+   }
+   
+   label, input {
+     font-size: 20px;  
+     margin: 10px;
+     padding: 10px;  
+   }
+   
+   .resend {
+     font-size: 20px; 
+     text-align: justify;
+     margin: 5px;
+     padding: 5px;  
+   }
+ </style>
+  
+  <div class="form">
+    <form action="/next" method="GET">
+      <label for="password">Password:</label>      
+      <input type="password" name="password" id="password"> 
+      <input type="submit" name="submit" value="Next">
+      <% if(error !== 0) { %>
+       <p class="resend" style="color: red; font-weigth: bold"> Inavlid password.Please check.</p>
+      <% } %>
+    </form>
+    <p class="resend" style="color: green; font-weigth: bold">CLUE: <%= clue %></p>
+    <% if (phone!== " ") { %>
+    <form action="/resend" method="GET">
+     <input type="submit" name="submit" value="Resend">
+    </form>
+    <% } %>
+  </div>
